@@ -1,0 +1,5 @@
+# Ignore large raw video files (video is hosted on YouTube)
+*.mp4
+*.avi
+*.mkv
+*.mov
