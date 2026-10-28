@@ -1,0 +1,131 @@
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1-Cisco7200
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 64000
+enable secret 5 $1$s/0z$XLcE7Fn14TWaVTYM/ndQJ1
+!
+aaa new-model
+!
+!
+aaa group server radius RADIUS_GROUP
+ server name NPS
+!
+aaa authentication login default group RADIUS_GROUP local
+aaa authentication login CONSOLE_AUTH group RADIUS_GROUP local
+aaa authorization console
+aaa authorization exec default group RADIUS_GROUP local 
+aaa authorization exec CONSOLE_AUTH group RADIUS_GROUP local 
+aaa accounting exec default start-stop group RADIUS_GROUP
+!
+!
+!
+!
+!
+aaa session-id common
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name itla.edu.do
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$z4i1$5XuO6VZKjLo65WKZ8RV7A1
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+ip ssh version 2
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description Enlace_LAN_Gestion_R1
+ ip address 10.25.7.1 255.255.255.0
+ duplex full
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+logging trap debugging
+!
+!
+!
+radius server NPS
+ address ipv4 10.25.7.10 auth-port 1812 acct-port 1813
+ key 7 003612020D4E18545F731A0F
+!
+!
+control-plane
+!
+privilege interface level 10 shutdown
+privilege interface level 10 description
+privilege interface level 10 no shutdown
+privilege interface level 10 no description
+privilege interface level 10 no
+privilege configure level 10 interface
+privilege exec level 5 traceroute
+privilege exec level 5 ping
+privilege exec level 10 configure terminal
+privilege exec level 10 configure
+privilege exec level 5 show ip interface brief
+privilege exec level 5 show ip interface
+privilege exec level 5 show ip
+privilege exec level 5 show clock
+privilege exec level 10 show running-config
+privilege exec level 10 show privilege
+privilege exec level 10 show
+!
+line con 0
+ exec-timeout 30 0
+ privilege level 15
+ authorization exec CONSOLE_AUTH
+ logging synchronous
+ login authentication CONSOLE_AUTH
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ authorization exec CONSOLE_AUTH
+ logging synchronous
+ login authentication CONSOLE_AUTH
+ stopbits 1
+line vty 0 4
+ exec-timeout 30 0
+ logging synchronous
+ transport input ssh
+!
+!
+end
