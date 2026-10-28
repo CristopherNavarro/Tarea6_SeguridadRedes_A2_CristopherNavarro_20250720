@@ -1,0 +1,29 @@
+================================================================================
+INSTITUTO TECNOLÓGICO DE LAS AMÉRICAS (ITLA)
+ÁREA DE SEGURIDAD INFORMÁTICA Y REDES
+ASIGNATURA: SEGURIDAD DE REDES
+DOCENTE: JONATHAN ESTEBAN RONDÓN CORNIEL
+================================================================================
+
+DATOS DEL ESTUDIANTE:
+Estudiante: Cristopher Navarro
+Matrícula: 2025-0720
+
+ASIGNACIÓN:
+Semana 6 - Asignación 2: Implementación de Seguridad AAA Centralizada con Servidor RADIUS (Windows Server 2022) y Equipos Cisco IOS
+
+ENLACE DEL REPOSITORIO EN GITHUB:
+https://github.com/CristopherNavarro/Tarea6_SeguridadRedes_A2_CristopherNavarro_20250720
+
+ENLACE DEL VIDEO DEMOSTRATIVO EN YOUTUBE:
+https://youtu.be/DlXASEInoCU
+
+DESCRIPCIÓN DEL LABORATORIO:
+Implementación y auditoría de seguridad AAA centralizada mediante protocolo RADIUS
+utilizando Windows Server 2022 (Active Directory y Network Policy Server) enlazado
+con Router Cisco 7200 y Switch Cisco IOSvL2. Se aplicó una matriz estricta de
+segregación de privilegios (Nivel 0, Nivel 5 y Nivel 10) gobernada por directivas de
+red NPS mediante Cisco AV-Pairs (shell:priv-lvl=X), con direccionamiento de red
+personalizado según matrícula (10.25.7.0/24), usuario local de contingencia
+administrativo (nivel 15) y auditoría en buffer de memoria.
+================================================================================
